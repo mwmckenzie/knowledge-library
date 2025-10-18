@@ -6,82 +6,162 @@
   <title>Entropy, Learning, and the Architecture of Effective Information</title>
   <style>
     :root {
-      color-scheme: light dark;
-      --text: #1a1a1a;
-      --bg: #fafafa;
-      --accent: #2c7be5;
-      --subtle: #555;
-      --serif: 'Georgia', 'Times New Roman', serif;
+      --bg: #fdfcf9;
+      --text: #222;
+      --accent: #b0192b;
+      --muted: #666;
+      --maxwidth: 760px;
+      --serif: "Georgia", "Times New Roman", serif;
       --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
+
     body {
-      background: var(--bg);
+      background-color: var(--bg);
       color: var(--text);
-      font-family: var(--sans);
-      line-height: 1.65;
-      margin: 0;
-      padding: 2rem 0;
-    }
-    main {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 3rem;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      border-radius: 12px;
-    }
-    h1, h2, h3 {
       font-family: var(--serif);
-      color: var(--accent);
-      margin-top: 2.5rem;
-    }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.3rem; }
-    h3 { font-size: 1.2rem; color: var(--subtle); }
-    p, li {
-      margin-top: 1rem;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
       font-size: 1.05rem;
     }
-    code, pre {
-      background: #f3f3f3;
-      border-radius: 4px;
-      font-family: 'Menlo', 'Consolas', monospace;
-      padding: 0.1rem 0.3rem;
+
+    main {
+      max-width: var(--maxwidth);
+      margin: 4rem auto;
+      background: #fff;
+      padding: 4rem 3rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
-    pre { padding: 1rem; overflow-x: auto; }
+
+    h1 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      font-weight: 700;
+      font-family: var(--serif);
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--sans);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-top: 3rem;
+      border-top: 1px solid #e6e6e6;
+      padding-top: 2rem;
+    }
+
+    p {
+      margin-top: 1.2rem;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    p:first-of-type {
+      font-size: 1.2rem;
+      line-height: 1.75;
+    }
+
+    em {
+      color: var(--muted);
+    }
+
+    ul, ol {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    code {
+      background-color: #f5f2f0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 0.9rem;
+    }
+
+    pre {
+      background-color: #f5f2f0;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
     table {
       border-collapse: collapse;
-      margin: 1rem 0;
       width: 100%;
+      margin: 2rem 0;
+      font-size: 0.95rem;
     }
+
     th, td {
-      border: 1px solid #ddd;
-      padding: 0.5rem 0.75rem;
-    }
-    th {
-      background: var(--accent);
-      color: white;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 0.75rem 0.5rem;
       text-align: left;
     }
-    tr:nth-child(even) td {
-      background: #f9f9f9;
+
+    th {
+      font-family: var(--sans);
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
     }
-    em { color: var(--subtle); }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-left: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 1px solid #eee;
+      padding-top: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 2rem 1.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
 <main>
   <h1>Entropy, Learning, and the Architecture of Effective Information</h1>
 
-  <h2>1. Entropy as Uncertainty</h2>
   <p>At the heart of information theory lies Claude Shannon’s simple but revolutionary insight:
   information is not a thing — it is <em>reduction in uncertainty</em>.</p>
 
-  <p>The entropy of a variable \(X\),
-  <code>H(X) = -Σ p(x) log₂ p(x)</code>,
-  measures, in bits, how unpredictable \(X\) is to an observer.
+  <h2>1. Entropy as Uncertainty</h2>
+  <p>The entropy of a variable \(X\), <code>H(X) = -Σ p(x) log₂ p(x)</code>, measures, in bits, how unpredictable \(X\) is to an observer.
   When a system can occupy many possible states with equal probability, entropy is high;
-  when one outcome dominates, entropy is low. Entropy therefore quantifies our ignorance, not the world’s complexity.</p>
+  when one outcome dominates, entropy is low.
+  Entropy therefore quantifies our ignorance, not the world’s complexity.</p>
 
   <p>A fair coin flip carries one bit of entropy.
   A biased coin — predictable nine times out of ten — carries about 0.47 bits.
@@ -89,9 +169,8 @@
   In every case, the measure describes uncertainty relative to what an observer knows.</p>
 
   <h2>2. Learning as Entropy Reduction</h2>
-  <p>Learning, viewed through this lens, is the process by which a learner’s uncertainty about the world decreases.</p>
-
-  <p>If <code>H_before</code> and <code>H_after</code> denote the learner’s entropy before and after exposure to new information, then
+  <p>Learning, viewed through this lens, is the process by which a learner’s uncertainty about the world decreases.
+  If <code>H_before</code> and <code>H_after</code> denote the learner’s entropy before and after exposure to new information, then
   <code>I = H_before − H_after</code> is the <strong>information gained</strong>.</p>
 
   <p>A novice begins with high uncertainty; each new data point dramatically sharpens prediction.
@@ -101,9 +180,8 @@
   <h2>3. Joint Entropy and Multiple Sources</h2>
   <p>In real learning, information rarely arrives from a single source.
   Books, lectures, experiments, and peers each offer partial, sometimes overlapping, views of the same subject.
-  The <strong>joint entropy</strong></p>
-  <p><code>H(Y₁, Y₂) = H(Y₁) + H(Y₂) − I(Y₁; Y₂)</code></p>
-  <p>measures total variability across sources, subtracting the mutual information that represents redundancy.</p>
+  The <strong>joint entropy</strong> <code>H(Y₁, Y₂) = H(Y₁) + H(Y₂) − I(Y₁; Y₂)</code>
+  measures total variability across sources, subtracting redundancy.</p>
 
   <h2>4. From Ideal Channels to Real Systems</h2>
   <p>Shannon’s original theory presumes <em>perfect information exchange</em>:
@@ -126,77 +204,52 @@
   Even when material is theoretically informative, real-world imperfections reduce the fraction of that information actually absorbed.</p>
 
   <h2>5. Multi-Modal Integration</h2>
-  <p>For multiple sources Y₁, Y₂, …, Yₙ:</p>
-  <p><code>I_eff,total = Σ αᵢ I(X;Yᵢ) − Σ βᵢⱼ I(Yᵢ;Yⱼ)</code></p>
-  <p>Each αᵢ captures the fidelity of a given source-to-learner pathway and each βᵢⱼ discounts redundancy between sources.
+  <p>For multiple sources Y₁, Y₂, …, Yₙ:
+  <code>I_eff,total = Σ αᵢ I(X;Yᵢ) − Σ βᵢⱼ I(Yᵢ;Yⱼ)</code>.
+  Each αᵢ captures the fidelity of a given source-to-learner pathway and each βᵢⱼ discounts redundancy between sources.
   High overlap yields diminishing returns; complementary channels (text + experiment + discussion) create synergy.</p>
 
   <h2>6. The Internal and External Perspectives</h2>
-  <p>A learner has an internal probability model P_int(X) — their own beliefs —
-  while an observer has access to the true state X.
+  <p>A learner has an internal probability model P_int(X) — their own beliefs — while an observer has access to the true state X.
   Two kinds of information gain follow:</p>
-
   <ul>
-    <li><strong>Subjective information gain</strong> = D_KL(P_after || P_before): how much the learner’s beliefs changed.</li>
-    <li><strong>Effective information gain</strong> = I(X; ĤX): how much those beliefs actually correspond to reality.</li>
+    <li><strong>Subjective information gain</strong>: D_KL(P_after || P_before) — how much beliefs changed.</li>
+    <li><strong>Effective information gain</strong>: I(X; ĤX) — how much beliefs correspond to reality.</li>
   </ul>
-
-  <p>Only the external observer can compute effective information gain, since it requires comparing beliefs with truth.
-  Confidence and correctness can diverge: a student may feel certain yet be wrong.</p>
 
   <h2>7. The Feedback Loop</h2>
   <p>Learning stabilizes only when subjective and objective entropies interact.
   Without feedback, subjective entropy eventually plateaus: the learner feels they “know enough,”
   but external error remains large.
-  A reliable external observer — teacher, test, or real-world outcome — re-injects discrepancy,
-  generating prediction error and driving belief revision.</p>
-
-  <ol>
-    <li>Learning phase: internal entropy falls rapidly.</li>
-    <li>Plateau: subjective certainty outpaces accuracy.</li>
-    <li>Feedback event: contradiction raises temporary uncertainty.</li>
-    <li>Re-alignment: subjective and objective entropies converge.</li>
-  </ol>
+  Reliable external observers — teachers, tests, or reality itself — provide feedback that re-injects discrepancy and drives belief revision.</p>
 
   <h2>8. The Bayesian Mirror</h2>
-  <p>This feedback cycle is formally equivalent to the <strong>Bayesian prior–observation–posterior update process</strong>.</p>
-  <p><code>P(X|Y) = [P(Y|X) P(X)] / P(Y)</code></p>
-  <p>The prior represents the learner’s internal model before feedback;
-  the posterior is the updated model after absorbing data.</p>
+  <p>This feedback cycle is formally equivalent to the <strong>Bayesian prior–observation–posterior update process</strong>:
+  <code>P(X|Y) = [P(Y|X) P(X)] / P(Y)</code>.
+  The prior represents the learner’s model before feedback; the posterior, the model after absorbing data.</p>
 
   <p>The expected reduction in entropy from observing Y,
   <code>I(X;Y) = H[P(X)] − H[P(X|Y)]</code>,
-  is the mutual information — the Shannon definition of information gain.
-  Reliable data yield large updates; weak or redundant data yield small ones.
+  is mutual information — the Shannon definition of information gain.
   Feedback acts as Bayesian correction, reweighting likelihoods and pulling beliefs toward the truth.</p>
 
   <h2>9. The Dynamics of Truth Alignment</h2>
   <p>Effective learning systems maintain continuous dialogue between internal prediction and external verification.
   If feedback is absent or unreliable, the system drifts toward illusory certainty.
-  When feedback is timely and credible, each contradiction injects new entropy, reopening the capacity for information gain.
-  Learning becomes an oscillation: compression of beliefs punctuated by corrective expansions.</p>
+  When feedback is timely and credible, each contradiction injects new entropy, reopening the capacity for information gain.</p>
 
   <h2>10. The Broader Picture</h2>
-  <p>The flow of knowledge is a cascade of entropy transformations:</p>
   <pre>X_true →(F_s) Y_encoded →(F_c) Z_transmitted →(F_d) ĤX_decoded →(F_i) Integrated Understanding</pre>
-  <p>Each stage conserves or loses bits of potential information;
-  feedback closes the loop by comparing ĤX to X_true and recalibrating the upstream mappings.</p>
+  <p>Each stage conserves or loses bits of potential information.
+  Feedback closes the loop by comparing ĤX to X_true and recalibrating the mappings.</p>
 
   <h2>11. Closing Perspective</h2>
-  <p>Entropy, mutual information, and Bayesian inference are different languages for the same process:
-  the continual negotiation between what is known and what is real.</p>
+  <blockquote>
+    Knowledge is not a static accumulation of facts but a dynamic equilibrium between two entropies —
+    the subjective and the objective — maintained through ongoing exchange with a reliable, corrective environment.
+  </blockquote>
 
-  <ul>
-    <li><strong>Entropy</strong> quantifies ignorance.</li>
-    <li><strong>Mutual information</strong> measures potential learning.</li>
-    <li><strong>Joint entropy</strong> describes the diversity and overlap of information sources.</li>
-    <li><strong>Fidelity coefficients</strong> capture real-world imperfections.</li>
-    <li><strong>Effective information gain</strong> records what actually survives those imperfections.</li>
-    <li><strong>Feedback and Bayesian updating</strong> keep internal models aligned with the external world.</li>
-  </ul>
-
-  <p>Knowledge is not a static accumulation of facts but a <strong>dynamic equilibrium between two entropies</strong> —
-  the subjective and the objective — maintained through ongoing exchange with a reliable, corrective environment.</p>
+  <footer>© 2025 — Adapted narrative synthesis of entropy, information theory, and Bayesian learning</footer>
 </main>
 </body>
 </html>
