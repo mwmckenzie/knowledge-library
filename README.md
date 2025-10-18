@@ -14,6 +14,12 @@ This project serves as a central hub for collecting, curating, and referencing m
 
 ---
 
+## Pages
+
+- [Entropy, Learning, and the Architecture of Effective Information](public/effective-information.html)
+
+---
+
 ## 🗂️ Structure
 
 - **📚 Wiki** — Main documentation and topic organization  
